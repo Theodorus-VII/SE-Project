@@ -10,10 +10,12 @@ import models
 from security import JWT
 import waiters, menu, items, services, auth
 
-templates = Jinja2Templates(directory="..\\Software Implementation\\menu\\menu\\")
+from databaseService import HotelTable
+
+templates = Jinja2Templates(directory=".\\menu\\menu\\")
 
 app = FastAPI()
-app.mount("/static" , StaticFiles(directory="..\\Software Implementation\\menu\\menu\\") , name="static")
+app.mount("/static" , StaticFiles(directory=".\\menu\\menu\\") , name="static")
 
 origins = [ 
     "*" 
@@ -53,9 +55,21 @@ def getQRcode(payload: models.QRget):
     qr0 = svg.replace("\n", "")
     qr0 = qr0.replace("\\", "")
     
-    print(qr0)
+    # print(qr0)
     # return {"QRstring": qr0}
     return HTMLResponse(content=qr0, media_type="application/svg+xml")
+
+
+@app.patch("/tables")
+def createtable(table: models.Table):
+    token = JWT.verify(table.token)
+    if not token['valid']:
+        return {
+            'success': False,
+            'message': token['error']
+        }
+    ownerId = token['payload']['user-id']
+    return HotelTable.createTable(ownerId, table.tablenum)
 
 
 app.include_router(waiters.router)

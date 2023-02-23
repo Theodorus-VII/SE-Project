@@ -23,7 +23,8 @@ function addOrdersToTable(id, table_id , name , amount){
 
 }
 
-function getOrders(token = "eyJhbGciOiAic2hhMjU2IiwgInR5cGUiOiAiand0In0=.eyJ1c2VyLWlkIjogNywgIm93bmVyLWlkIjogMTMsICJtZW51LWlkIjogMiwgImlhdCI6IDE2NzY5NjE4MTksICJleHAiOiAxNjc3MDA1MDE5fQ==.465a070cb42c6114afd5c7bf59ca88220066c1fb223676e57acc853c937da205" ){
+function getOrders(){
+    token = sessionStorage["token"]
     var myHeaders = new Headers();
     myHeaders.append("token", `${token}`);
 

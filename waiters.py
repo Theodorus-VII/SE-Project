@@ -11,16 +11,16 @@ router = APIRouter(
     tags = ["waiters"]
 )
 
-templates = Jinja2Templates(directory="..\\Software Implementation\\menu\\menu\\")
+templates = Jinja2Templates(directory=".\\menu\\menu\\")
 
-router.mount("/static" , StaticFiles(directory="..\\Software Implementation\\menu\\menu\\") , name="static")
+router.mount("/static" , StaticFiles(directory=".\\menu\\menu\\") , name="static")
 
 
 
 #creating Waiters account for a hotel
 @router.post("/owner/waiter")
 def createWaiter(payload : models.CreateWaiter):
-    print("SDFSFSFSF")
+    # print("SDFSFSFSF")
     token = JWT.verify(payload.token)
     if token['valid']:
         if token['payload']['user-class'] == 2:
@@ -54,7 +54,7 @@ def deleteWaiter(payload : models.DeleteWaiter):
     token = JWT.verify(payload.token)
     if token['valid']:
         if token['payload']['user-class'] == 2:
-            waiterDeleted = Waiter.deleteWaiter(ownerId=token['payload']['user-id'] , userName=payload.userName)
+            waiterDeleted = Waiter.deleteWaiter(ownerId=token['payload']['user-id'] , waiterId=payload.waiterId)
             if waiterDeleted == True:
                 return{
                     'success' : True,
@@ -157,4 +157,32 @@ def acceptOrder(payload : models.WaiterPlaceOrder , orderId : int):
         return{
             "success" : False,
             "message" : token['error']
+        }
+
+@router.get("/owner/waiters")
+def getWaiters(token: str = Header()):
+    token = JWT.verify(token)
+    if not token['valid']:
+        return {
+            'success': False,
+            'message': token['error']
+        }
+    userId = token['payload']['user-id']
+    res = Waiter.getWaiters(userId)
+    result = []
+
+    if res:
+        # print(res)
+        for i in res:
+            result.append(
+                {
+                    "waiterId": i[0],
+                    "username": i[2]
+                }
+            )
+        return result
+    else:
+         return{
+            "success" : False,
+            "message" : "none"
         }

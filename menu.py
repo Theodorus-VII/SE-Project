@@ -17,9 +17,9 @@ router = APIRouter(
     tags = ["menu"]
 )
 
-templates = Jinja2Templates(directory="..\\Software Implementation\\menu\\menu\\")
+templates = Jinja2Templates(directory=".\\menu\\menu\\")
 
-router.mount("/static" , StaticFiles(directory="..\\Software Implementation\\menu\\menu\\") , name="static")
+router.mount("/static" , StaticFiles(directory=".\\menu\\menu\\") , name="static")
 
 
 
@@ -166,7 +166,7 @@ def deleteMenu(menu: models.menuDelete):
 @router.get("/menus")
 def getMenus(token: str = Header()):
     token = JWT.verify(token)
-    print(token)
+    # print(token)
     if token['valid']:
         ownerId = token['payload']['user-id']
         return Menu.getUserMenuDescription(ownerId)

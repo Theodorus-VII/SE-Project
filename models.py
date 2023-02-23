@@ -36,7 +36,7 @@ class CreateWaiter(BaseModel):
 
 class DeleteWaiter(BaseModel):
     token : str
-    userName : str
+    waiterId : int
 
 
 class UpdateServicePrice(BaseModel):
@@ -115,3 +115,7 @@ class QRget(BaseModel):
 class itemDelete(BaseModel):
     token: str
     itemId: int
+
+class Table(BaseModel):
+    token: str
+    tablenum: int

@@ -19,9 +19,9 @@ router = APIRouter(
 )
 
 
-templates = Jinja2Templates(directory="..\\Software Implementation\\menu\\menu\\")
+templates = Jinja2Templates(directory=".\\menu\\menu\\")
 
-router.mount("/static" , StaticFiles(directory="..\\Software Implementation\\menu\\menu\\") , name="static")
+router.mount("/static" , StaticFiles(directory=".\\menu\\menu\\") , name="static")
 
 
 
@@ -57,7 +57,7 @@ def getItems(token: str = Header()):
         }
 
 
-@router.put("/menus/items")
+@router.post("/menus/items/update")
 def updateItems(item: models.itemUpdate):
     item.itemId = int(item.itemId)
     token = JWT.verify(item.token)

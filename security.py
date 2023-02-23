@@ -51,20 +51,20 @@ class JWT:
 
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    header = {
-                "alg" : 'sha256',
-                "type" : 'jwt'
-            }
+#     header = {
+#                 "alg" : 'sha256',
+#                 "type" : 'jwt'
+#             }
 
-    payload = {
-            "user-name" : 'tinsa',
-            "iat" : 1668702026,
-            "exp" : 1000668702026 + 3600
-        }
+#     payload = {
+#             "user-name" : 'tinsa',
+#             "iat" : 1668702026,
+#             "exp" : 1000668702026 + 3600
+#         }
 
-    print(JWT.sign(header , payload))
-    print("same: ", JWT.verify('eyJhbGciOiAic2hhMjU2IiwgInR5cGUiOiAiand0In0=.eyJ1c2VyLW5hbWUiOiAidGluc2EiLCAiaWF0IjogMTY2ODcwMjAyNiwgImV4cCI6IDEwMDA2Njg3MDU2MjZ9.c7c88cd541729126f5f27b432bf88ee765a1f7efddd48b46b8e79bc5115267bd')['payload']['user-name'])
+#     print(JWT.sign(header , payload))
+#     print("same: ", JWT.verify('eyJhbGciOiAic2hhMjU2IiwgInR5cGUiOiAiand0In0=.eyJ1c2VyLW5hbWUiOiAidGluc2EiLCAiaWF0IjogMTY2ODcwMjAyNiwgImV4cCI6IDEwMDA2Njg3MDU2MjZ9.c7c88cd541729126f5f27b432bf88ee765a1f7efddd48b46b8e79bc5115267bd')['payload']['user-name'])
     
-    pass
+#     pass

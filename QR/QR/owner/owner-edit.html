@@ -13,7 +13,7 @@
 
     <title>Owner Edit Menu</title>
 </head>
-<body style="background-color: rgb(230, 230, 230);">
+<body style="background-color: rgb(230, 230, 230);" onload="getItems()">
     <div class="container p-0 m-0">
         <div class="row menu-head">
             <img class="col-12 col-md-6" style="border-bottom-right-radius: 100ch;" src="../imgs/kagyana-2955466_1920 1.png" alt="">    
@@ -28,33 +28,7 @@
         <div class="row" style="gap: 10px;">
             <div id="category-1" class="col-12 col-md-5"> 
                 <!-- <span class="fw-bold text-muted" style="font-size: medium;">Food </span> -->
-                <div class="d-flex flex-column  ms-5 p-2 shadow-lg p-3 bg-white rounded">
-                    <div class="item d-flex flex-column">
-                        <img style="width: 8px;" src="../imgs/Ellipse 11.png" alt="">
-                        <div class="edit-form form-floating">
-                            <div class="mb-3">
-                              <label for="edit-name">Name</label>
-                              <input type="text" class="form-control" id="edit-name" placeholder="Enter name">
-                            </div>
-                            
-                            <div class="mb-3">
-                              <label for="edit-description">Description</label>
-                              <input type="text" class="form-control" id="edit-description" placeholder="Enter description">
-                            </div>
-                            
-                            <div class="mb-3">
-                              <label for="edit-price">Price</label>
-                              <input type="text" class="form-control" id="edit-price" placeholder="Enter price">
-                            </div>
-                            
-                            <button class="save-button btn btn-outline-success" id="save-item">Save</button>
-                          </div>
-                          
-                    </div>
-                    <!-- <div class="mt-2 price-and-add d-flex justify-content-between">
-                        <div id="price-1">Birr 180</div>
-                        <button class="order-button btn btn-outline-success txt-dark fw-bold" id="order-item-1">Order</button>                    </div> -->
-                </div>
+                
             </div>
             <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center" >
                 <!-- <div>Drinks</div> -->
@@ -93,7 +67,7 @@
     </div>
     <br>
           
-    <footer class="bg-light text-center text-muted py-3">
+    <footer class="bg-light text-center text-muted m-0 py-3">
         
         &copy; 2023 Your Company Name. All rights reserved.
       </footer>

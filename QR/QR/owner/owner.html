@@ -13,27 +13,17 @@
   <script src='./js/owner.html.js'></script>
 </head>
 
-<body onload="getMenu()">
+<body onload="getMenu(); getWaiters()" >
   <div class="container position-relative">
     <div class="row position-relative ">
 
-      <!-- <div class="navigation-menu col-12 col-sm-2 bg-dark border-0 border-end">
-                <ul class="nav flex-column list-unstyled mt-3">
-                    <li class="nav-item active">
-                      <a class="nav-link text-decoration-none text-secondary" href="#">Change Plans</a>
-                    </li>
-                    <li class="nav-item ">
-                      <a class="nav-link text-decoration-none text-light" href="#">See Your Menus</a>
-                    </li>
-                    <li class="nav-item ">
-                      <a class="nav-link text-decoration-none text-secondary" href="#">Create A New One</a>
-                    </li>
-                    <li class="nav-item ">
-                      <a class="nav-link text-decoration-none text-secondary" href="#">Make Accounts for your waiters</a>
-                    </li>
-                  </ul>
-                  
-            </div> -->
+      <!-- added a log out button -->
+      <a class="position-absolute btn btn-outline-dark bg-light"
+      style="top: 8px; right: 8px; width: fit-content;" href="../Sign-in.html">
+        Log Out
+      </a>
+      
+      
       <div class="menu-cards col-12 col-md-4 pb-5 d-flex flex-column position-relative shadow-lg bg-light rounded"
         style="margin-top: 70px;">
         <div class="text-center m-3 fw-bold"> Your Menus Will Be <br> Shown Here</div>
@@ -98,14 +88,9 @@
       </div>
 
       <div class="col-12 col-md-3 pb-2 d-flex flex-column position-relative shadow-lg 
-            bg-light border rounded" style="margin-top: 70px; height: fit-content;">
+            bg-light border rounded" style="margin-top: 70px; height: fit-content;" id="waiter-show">
         <div class="text-center m-3 fw-bold">Your Waiters Will Be Shown Here</div>
-        <div class="waiter-cards border p-2 rounded ">
-          <h5 class="fs-6 p-1" id="menu-title-1">Username: <span id="username-1">username-1</span></h5>
-          <p class="text-secondary p-1" id="menu-description-1">password: <span id="password-1">password-1</span></p>
-          <div>
-            <button class="btn btn-danger p-1 fw-bold m-0" id="delete-waiter-1">Delete</button>
-          </div>
+        <div id="waiter-show">
         </div>
         <div class="col-12 d-flex flex-column justify-content-start mt-2 align-items-center">
           <div class="shadow-lg  mb-5 bg-white rounded" style="padding: 4%;">

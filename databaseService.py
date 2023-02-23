@@ -101,9 +101,9 @@ class Waiter:
             return e
 
     @staticmethod
-    def deleteWaiter(ownerId, userName):
+    def deleteWaiter(ownerId, waiterId):
         query = Waiter.model.delete().where(Waiter.model.c.ownerId == ownerId,
-                                            Waiter.model.c.userName == userName)
+                                            Waiter.model.c.id == waiterId)
         try:
             connection.execute(query)
             connection.commit()
@@ -212,15 +212,6 @@ class Item:
         except Exception as e:
             return e
 
-    @staticmethod
-    def removeMenuItem(itemId):
-        query = Item.model.delete().where(Item.model.c.id == itemId)
-        try:
-            connection.execute(query)
-            connection.commit()
-            return True
-        except Exception as e:
-            return e
 
     @staticmethod
     def getMenuItem(itemId):
@@ -251,6 +242,16 @@ class Item:
     @staticmethod
     def removeMenuItem(itemId, token):
         query = Item.model.delete().where(Item.model.c.id == itemId)
+        try:
+            connection.execute(query)
+            connection.commit()
+            return True
+        except Exception as e:
+            return e
+
+    @staticmethod
+    def removeMenuItems(menuId, token):
+        query = Item.model.delete().where(Item.model.c.id == menuId)
         try:
             connection.execute(query)
             connection.commit()
@@ -415,10 +416,15 @@ class HotelTable:
     @staticmethod
     def createTable(ownerId, tableNum):
         query = HotelTable.model.insert().values(ownerId=ownerId, tableNum=tableNum)
+        query2 = HotelTable.model.select().where((HotelTable.model.c.ownerId == ownerId),
+                                                (HotelTable.model.c.tableNum == tableNum))
         try:
-            connection.execute(query)
-            connection.commit()
-            return True
+            if not connection.execute(query2).fetchone():
+                connection.execute(query)
+                connection.commit()
+                return True
+            else:
+                return
         except Exception as e:
             return e
 
@@ -454,5 +460,5 @@ if __name__ == "__main__":
     # HotelTables class test
     # print(HotelTable.getTableNum(ownerId=2 , tableNum=1))
 
-    print(hash('12345'))
+    # print(hash('12345'))
     pass

@@ -43,5 +43,5 @@ async function sendLogInInfo(email , password){
 
 
 async function aftersignin(){
-  await (window.location.href = "./waiter.html");
+  await (window.location.replace("./waiter.html"));
 }

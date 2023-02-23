@@ -42,5 +42,5 @@ async function sendLogInInfo(email , password){
 
 //function to call on successful login
 async function afterLogin(){
-  await (window.location.href = "./changePrices.html");
+  await (window.location.replace("./changePrices.html"));
 }

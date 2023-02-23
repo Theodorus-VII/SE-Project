@@ -45,5 +45,6 @@ async function sendLogInInfo(email , password){
 
 //function to call on successful login
 function afterLogin(){
-  window.location.href = "./owner/owner.html";
+  window.location.href = ("./owner/owner.html");
+  window.location.href = ("./owner/owner.html");
 }

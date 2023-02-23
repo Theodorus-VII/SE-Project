@@ -89,7 +89,7 @@ function sendSignUpInfo(email="t" , password="t" , paymentClass){
           
  }
 
-function afterSignUp(){
-    document.location.href = "./Sign-in.html"
+async function afterSignUp(){
+    await document.location.replace("./Sign-in.html");
     // alert("passed")
 } 

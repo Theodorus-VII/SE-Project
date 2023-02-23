@@ -43,6 +43,7 @@ def getItems(token: str = Header()):
         for i in items:
             result.append(
                 {
+                    "itemId": i[0],
                     "name": i[2],
                     "description": i[3],
                     "price": i[4]

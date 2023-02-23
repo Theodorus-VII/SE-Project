@@ -175,7 +175,7 @@ function toggleQR() {
     document.getElementById("qr-window").classList.toggle("d-none");
 }
 function toMenuEdit() {
-    window.location.href = "owner-edit.html?id=" + sessionStorage["menuId"];
+    window.location.replace("owner-edit.html?id=" + sessionStorage["menuId"]);
 }
 
 

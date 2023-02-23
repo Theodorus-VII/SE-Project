@@ -12,10 +12,10 @@ import waiters, menu, items, services, auth
 
 from databaseService import HotelTable
 
-templates = Jinja2Templates(directory=".\\menu\\menu\\")
+templates = Jinja2Templates(directory="./menu/menu")
 
 app = FastAPI()
-app.mount("/static" , StaticFiles(directory=".\\menu\\menu\\") , name="static")
+app.mount("/static" , StaticFiles(directory="./menu/menu") , name="static")
 
 origins = [ 
     "*" 

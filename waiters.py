@@ -11,9 +11,9 @@ router = APIRouter(
     tags = ["waiters"]
 )
 
-templates = Jinja2Templates(directory=".\\menu\\menu\\")
+templates = Jinja2Templates(directory="./menu/menu")
 
-router.mount("/static" , StaticFiles(directory=".\\menu\\menu\\") , name="static")
+router.mount("/static" , StaticFiles(directory="./menu/menu") , name="static")
 
 
 
